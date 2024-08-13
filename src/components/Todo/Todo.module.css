@@ -1,0 +1,84 @@
+.todo {
+	--width: 140px;
+	--height: 200px;
+
+	position: relative;
+
+	text-align: center;
+	hyphens: auto;
+
+	background-color: yellowgreen;
+	color: black;
+
+	border-radius: 15px;
+}
+
+.todoComplete {
+	background-color: tomato;
+
+	& .label {
+		text-decoration: line-through;
+	}
+}
+
+.todoEditMode {
+	animation: animationEditMode infinite 0.3s linear;
+}
+
+@keyframes animationEditMode {
+	0% {
+		rotate: 0.5deg;
+	}
+
+	50% {
+		rotate: -0.5deg;
+	}
+
+	100% {
+		rotate: 0.5deg;
+	}
+}
+
+.id {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: pointer;
+
+	width: 100%;
+	height: var(--height);
+	padding: 15px 30px;
+}
+
+.input {
+	visibility: hidden;
+}
+
+.inputOnChange {
+	width: 100%;
+	font-family: inherit;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.inputOnChangeDisabled {
+	background-color: transparent;
+	pointer-events: none;
+	color: black;
+	outline: none;
+}
+
+.buttonBlock {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	gap: 10px;
+}

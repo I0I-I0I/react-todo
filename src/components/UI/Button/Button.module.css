@@ -1,0 +1,132 @@
+.button {
+	border: none;
+	background-color: black;
+	color: inherit;
+	font-family: inherit;
+	font-size: 1rem;
+
+	&:disabled {
+		pointer-events: none;
+	}
+}
+
+.buttonAdd,
+.buttonEdit,
+.buttonClose,
+.buttonSave,
+.buttonRemove {
+	--inner-size: calc(100% - 8px);
+
+	position: relative;
+	width: 25px;
+	height: 25px;
+	border-radius: 4px;
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+	}
+}
+
+.buttonAdd {
+	--color: lightgreen;
+
+	&::before,
+	&::after {
+		content: "";
+		width: var(--inner-size);
+		height: 3px;
+
+		border-radius: 4px;
+
+		background-color: var(--color);
+	}
+
+	&::after {
+		rotate: 90deg;
+	}
+}
+
+.buttonRemove {
+	--color: red;
+
+	&::after {
+		content: "";
+		width: var(--inner-size);
+		height: 3px;
+
+		border-radius: 4px;
+
+		background-color: var(--color);
+	}
+}
+
+.buttonEdit {
+	--color: yellow;
+
+	&::after {
+		content: "~";
+		translate: -50% -1.55rem;
+		font-size: 2rem;
+		color: var(--color);
+	}
+}
+
+.buttonClose {
+	--color: tomato;
+
+	&::before,
+	&::after {
+		content: "";
+		width: var(--inner-size);
+		height: 3px;
+
+		border-radius: 4px;
+
+		background-color: var(--color);
+		rotate: 45deg;
+	}
+
+	&::after {
+		rotate: 135deg;
+	}
+}
+
+.buttonSave {
+	&::after {
+		content: "";
+		background-color: green;
+		rotate: 45deg;
+		width: 3px;
+		height: 50%;
+		left: 15px;
+	}
+	&::before {
+		content: "";
+		background-color: green;
+		width: 3px;
+		height: 30%;
+		rotate: -45deg;
+		left: 8px;
+	}
+}
+
+.buttonDefault {
+	background-color: #888;
+	color: white;
+	padding: 5px;
+	border-radius: 4px;
+	text-transform: uppercase;
+	transition: background-color 0.2s ease-in-out;
+
+	&:hover {
+		background-color: #aaa;
+	}
+
+	&:disabled {
+		opacity: 0.7;
+	}
+}

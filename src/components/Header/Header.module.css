@@ -1,0 +1,17 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 25px clamp(var(--global-padding), 5vw - 15px, 50px);
+}
+
+.header__logo {
+	margin-right: auto;
+}
+
+.button {
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	translate: -50% 0;
+}
