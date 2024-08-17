@@ -5,7 +5,6 @@ import { TodoProvider } from "./components/context/todoContext";
 import { EditModeProvider } from "./components/context/editMode";
 
 const App = () => (
-	// TODO: drag and drop in edit mode (disable toggle complete)
 	// TODO: add categories for todos
 	// TODO: integration with local storage
 

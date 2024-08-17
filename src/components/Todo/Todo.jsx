@@ -22,8 +22,8 @@ const Todo = ({ children, index }) => {
 	}, [editMode]);
 
 	useEffect(() => {
-		inputOnEdit.current.focus()
-	}, [localEditMode])
+		inputOnEdit.current.focus();
+	}, [localEditMode]);
 
 	const handleEditTodo = (e) => {
 		e.preventDefault();
@@ -67,7 +67,11 @@ const Todo = ({ children, index }) => {
 		>
 			<form onSubmit={handleEditTodo}>
 				<span className={styles.id}>{index}</span>
-				<label htmlFor={"todoComplete" + children.id} className={styles.label}>
+				<label
+					htmlFor={"todoComplete" + children.id}
+					className={styles.label}
+					style={{ cursor: editMode && "grab" }}
+				>
 					<Input
 						ref={inputOnEdit}
 						value={inputState.value}
