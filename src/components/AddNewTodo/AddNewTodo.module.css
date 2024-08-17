@@ -1,4 +1,4 @@
-.addNewCard {
+.addNewTodo {
 	--color: #808080;
 
 	position: relative;
@@ -21,14 +21,14 @@
 
 	color: var(--color);
 	border-color: var(--color);
-	transition: all .1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 
 .plus {
 	font-size: 4rem;
 }
 
-.addNewCard:hover {
+.addNewTodo:hover {
 	--color: lightgreen;
 
 	cursor: pointer;

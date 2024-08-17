@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import Todo from "../Todo/Todo";
 import { TodoContext } from "../context/todoContext";
 import styles from "./TodoList.module.css";
-import AddNewCard from "../AddNewCard/AddNewCard";
+import AddNewTodo from "../AddNewTodo/AddNewTodo";
 import { EditModeContext } from "../context/editMode";
 
 const TodoList = () => {
@@ -51,7 +51,7 @@ const TodoList = () => {
 						</li>
 					))}
 				<li>
-					<AddNewCard />
+					<AddNewTodo />
 				</li>
 			</ul>
 		</div>
