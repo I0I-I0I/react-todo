@@ -44,6 +44,7 @@ const AddNewCard = () => {
 					<form onSubmit={onSubmit}>
 						<h2 style={{ textAlign: "center" }}>Create a new todo</h2>
 						<Input
+							autoFocus
 							name=""
 							id=""
 							value={inputState.value}

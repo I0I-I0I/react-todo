@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import useInput from "../../hooks/useInput";
 import cls from "../../utils/cls";
 import Button from "../UI/Button/Button";
@@ -12,6 +12,7 @@ const Todo = ({ children, index }) => {
 	const [editMode] = useContext(EditModeContext);
 	const [onChangeInput, inputState] = useInput(children.title);
 	const [localEditMode, setLocalEditMode] = useState(false);
+	const inputOnEdit = useRef();
 
 	useEffect(() => {
 		if (!editMode) {
@@ -19,6 +20,10 @@ const Todo = ({ children, index }) => {
 			inputState.setValue(children.title);
 		}
 	}, [editMode]);
+
+	useEffect(() => {
+		inputOnEdit.current.focus()
+	}, [localEditMode])
 
 	const handleEditTodo = (e) => {
 		e.preventDefault();
@@ -33,6 +38,7 @@ const Todo = ({ children, index }) => {
 	};
 
 	const toggleCompletedTodo = (id) => {
+		if (editMode) return;
 		dispatchTodos({
 			type: "TOGGLE",
 			payload: id,
@@ -44,6 +50,11 @@ const Todo = ({ children, index }) => {
 			type: "REMOVE",
 			payload: id,
 		});
+	};
+
+	const onEdit = (e) => {
+		e.preventDefault();
+		setLocalEditMode(true);
 	};
 
 	return (
@@ -58,6 +69,7 @@ const Todo = ({ children, index }) => {
 				<span className={styles.id}>{index}</span>
 				<label htmlFor={"todoComplete" + children.id} className={styles.label}>
 					<Input
+						ref={inputOnEdit}
 						value={inputState.value}
 						type="text"
 						onChange={onChangeInput}
@@ -80,7 +92,7 @@ const Todo = ({ children, index }) => {
 						<Button className={styles.button} variant="save" type="submit" />
 					) : (
 						<Button
-							onClick={(e) => (e.preventDefault(), setLocalEditMode(true))}
+							onClick={(e) => onEdit(e)}
 							className={styles.button}
 							variant="edit"
 						/>
