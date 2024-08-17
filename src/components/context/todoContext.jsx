@@ -33,6 +33,8 @@ const todosReducer = (state, action) => {
 						}
 					: item,
 			);
+		case "SET":
+			return [...action.payload];
 		default:
 			throw new Error();
 	}

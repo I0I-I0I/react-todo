@@ -1,7 +1,4 @@
 .todo {
-	--width: 140px;
-	--height: 200px;
-
 	position: relative;
 
 	text-align: center;
@@ -53,7 +50,7 @@
 	cursor: pointer;
 
 	width: 100%;
-	height: var(--height);
+	height: var(--todo-height);
 	padding: 15px 30px;
 }
 

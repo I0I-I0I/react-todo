@@ -1,0 +1,35 @@
+.addNewCard {
+	--color: #808080;
+
+	position: relative;
+
+	min-width: var(--todo-width);
+	height: var(--todo-height);
+
+	border: dashed 2px;
+	border-radius: 15px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100%;
+	padding: 15px 30px;
+
+	font-size: 1.5rem;
+	text-align: center;
+
+	color: var(--color);
+	border-color: var(--color);
+	transition: all .1s ease-in-out;
+}
+
+.plus {
+	font-size: 4rem;
+}
+
+.addNewCard:hover {
+	--color: lightgreen;
+
+	cursor: pointer;
+}
