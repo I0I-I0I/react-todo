@@ -47,7 +47,7 @@ const Todo = ({ children, index }) => {
 	};
 
 	return (
-		<li
+		<div
 			className={cls(
 				styles.todo,
 				children.completed ? styles.todoComplete : "",
@@ -92,7 +92,7 @@ const Todo = ({ children, index }) => {
 					/>
 				</div>
 			</form>
-		</li>
+		</div>
 	);
 };
 
