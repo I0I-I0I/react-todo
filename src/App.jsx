@@ -4,9 +4,10 @@ import TodoList from "./components/TodoList/TodoList";
 import { TodoContext } from "./components/context/todoContext";
 import { useContext, useEffect } from "react";
 
-const App = () => {
-	// TODO: add categories for todos
+// TODO: add categories for todos
+// FIX: layout
 
+const App = () => {
 	const { dispatchTodos } = useContext(TodoContext);
 
 	useEffect(() => {
@@ -22,15 +23,3 @@ const App = () => {
 };
 
 export default App;
-
-// const [errorTodo, isLoadingTodo, fetchTodo] = useFetching(async () => {
-// 	const response = await TodoService.getTodos();
-// 	setTodos(response);
-// });
-// useEffect(() => {
-// 	fetchTodo();
-// }, []);
-// if (isLoadingTodo) {
-// 	return <h1>Loading...</h1>;
-// }
-// /* {errorTodo ? <h1>{errorTodo}</h1> : <TodoList todos={todos} />} */
