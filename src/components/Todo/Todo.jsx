@@ -9,7 +9,7 @@ import styles from "./Todo.module.css";
 
 const Todo = ({ children, index }) => {
 	const { dispatchTodos } = useContext(TodoContext);
-	const [editMode] = useContext(EditModeContext);
+	const { editMode } = useContext(EditModeContext);
 	const [onChangeInput, inputState] = useInput(children.title);
 	const [localEditMode, setLocalEditMode] = useState(false);
 	const inputOnEdit = useRef();

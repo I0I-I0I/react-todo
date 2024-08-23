@@ -6,7 +6,7 @@ export const EditModeProvider = ({ children }) => {
 	const [editMode, setEditMode] = useState(false);
 
 	return (
-		<EditModeContext.Provider value={[editMode, setEditMode]}>
+		<EditModeContext.Provider value={{ editMode, setEditMode }}>
 			{children}
 		</EditModeContext.Provider>
 	);

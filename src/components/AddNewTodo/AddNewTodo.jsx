@@ -9,7 +9,7 @@ import { EditModeContext } from "../context/editMode";
 
 const AddNewTodo = () => {
 	const { dispatchTodos } = useContext(TodoContext);
-	const [editMode] = useContext(EditModeContext);
+	const { editMode } = useContext(EditModeContext);
 	const [isAddTodo, setIsAddTodo] = useState(false);
 	const [onChangeInputValue, inputState] = useInput("");
 

@@ -7,7 +7,7 @@ import { EditModeContext } from "../context/editMode";
 
 const TodoList = () => {
 	const { todos, dispatchTodos } = useContext(TodoContext);
-	const [editMode] = useContext(EditModeContext);
+	const { editMode } = useContext(EditModeContext);
 	const [currentTodo, setCurrentTodo] = useState(null);
 
 	const dragStartHandler = (_, todo) => {

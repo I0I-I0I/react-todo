@@ -7,7 +7,7 @@ import { TodoContext } from "../context/todoContext";
 import { EditModeContext } from "../context/editMode";
 
 const Header = () => {
-	const [editMode, setEditMode] = useContext(EditModeContext);
+	const { setEditMode } = useContext(EditModeContext);
 	const { todos } = useContext(TodoContext);
 
 	if (todos.length === 0) {
@@ -17,7 +17,6 @@ const Header = () => {
 	const toggleEditTodoList = () => {
 		setEditMode((prev) => !prev);
 	};
-
 
 	return (
 		<div className={styles.header}>
