@@ -1,36 +1,34 @@
 import Header from "./components/Header/Header";
 import TodoList from "./components/TodoList/TodoList";
-
+import TodoService from "./api/TodoService";
+import useFetching from "./hooks/useFetching";
 import { TodoContext } from "./components/context/todoContext";
 import { useContext, useEffect } from "react";
 
-const App = () => {
-	// TODO: add categories for todos
+// TODO: update performance
 
-	const { dispatchTodos } = useContext(TodoContext);
+const App = () => {
+	const { todos, dispatchTodos } = useContext(TodoContext);
+
+	const [errorTodo, isLoadingTodo, fetchTodo] = useFetching(async () => {
+		const response = await TodoService.getTodos();
+		dispatchTodos({ type: "SET_TODOS", payload: response });
+	});
 
 	useEffect(() => {
-		dispatchTodos({ type: "GET_STORE" });
-	}, [dispatchTodos]);
+		fetchTodo();
+	}, []);
+
+	if (!todos || isLoadingTodo) {
+		return <h1>Loading...</h1>;
+	}
 
 	return (
 		<>
 			<Header />
-			<TodoList />
+			{errorTodo ? <h1>{errorTodo}</h1> : <TodoList todos={todos} />}
 		</>
 	);
 };
 
 export default App;
-
-// const [errorTodo, isLoadingTodo, fetchTodo] = useFetching(async () => {
-// 	const response = await TodoService.getTodos();
-// 	setTodos(response);
-// });
-// useEffect(() => {
-// 	fetchTodo();
-// }, []);
-// if (isLoadingTodo) {
-// 	return <h1>Loading...</h1>;
-// }
-// /* {errorTodo ? <h1>{errorTodo}</h1> : <TodoList todos={todos} />} */
