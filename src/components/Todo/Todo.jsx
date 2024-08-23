@@ -37,18 +37,18 @@ const Todo = ({ children, index }) => {
 		setLocalEditMode(false);
 	};
 
-	const toggleCompletedTodo = (id) => {
+	const toggleCompletedTodo = (item) => {
 		if (editMode) return;
 		dispatchTodos({
 			type: "TOGGLE",
-			payload: id,
+			payload: item,
 		});
 	};
 
-	const onRemoveTodo = (id) => {
+	const onRemoveTodo = (item) => {
 		dispatchTodos({
 			type: "REMOVE",
-			payload: id,
+			payload: item,
 		});
 	};
 
@@ -87,7 +87,7 @@ const Todo = ({ children, index }) => {
 						id={"todoComplete" + children.id}
 						type="checkbox"
 						checked={children.completed}
-						onChange={() => toggleCompletedTodo(children.id)}
+						onChange={() => toggleCompletedTodo(children)}
 						className="hidden"
 					/>
 				</label>
@@ -102,7 +102,7 @@ const Todo = ({ children, index }) => {
 						/>
 					)}
 					<Button
-						onClick={(e) => (e.preventDefault(), onRemoveTodo(children.id))}
+						onClick={(e) => (e.preventDefault(), onRemoveTodo(children))}
 						className={styles.button}
 						variant="remove"
 					/>

@@ -18,6 +18,7 @@ const Header = () => {
 		setEditMode((prev) => !prev);
 	};
 
+
 	return (
 		<div className={styles.header}>
 			<Logo className={styles.header__logo} />

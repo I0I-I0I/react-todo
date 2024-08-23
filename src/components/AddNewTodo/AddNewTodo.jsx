@@ -24,6 +24,7 @@ const AddNewTodo = () => {
 			payload: {
 				title: inputState.value,
 				id: Date.parse(new Date()),
+				completed: false,
 			},
 		});
 		inputState.setValue("");
