@@ -2,39 +2,46 @@ import { createContext, useReducer } from "react";
 
 export const TodoContext = createContext(null);
 
+const setStore = (state) => {
+	localStorage.setItem("todos", JSON.stringify(state));
+	return state;
+};
+
 const todosReducer = (state, action) => {
 	switch (action.type) {
 		case "ADD":
-			return [
-				...state,
-				{
-					id: action.payload.id,
-					title: action.payload.title,
-					completed: false,
-				},
-			];
+			return setStore([...state, action.payload]);
 		case "EDIT":
-			return state.map((item) =>
-				item.id === action.payload.id
-					? {
-							...item,
-							title: action.payload.title,
-						}
-					: item,
+			return setStore(
+				state.map((item) =>
+					item.id === action.payload.id
+						? {
+								...item,
+								title: action.payload.title,
+							}
+						: item,
+				),
 			);
 		case "REMOVE":
-			return state.filter((item) => item.id !== action.payload);
+			return setStore(state.filter((item) => item.id !== action.payload.id));
 		case "TOGGLE":
-			return state.map((item) =>
-				item.id === action.payload
-					? {
-							...item,
-							completed: !item.completed,
-						}
-					: item,
+			return setStore(
+				state.map((item) =>
+					item.id === action.payload.id
+						? {
+								...item,
+								completed: !item.completed,
+							}
+						: item,
+				),
 			);
 		case "SET":
-			return [...action.payload];
+			return setStore([...action.payload]);
+		case "GET_STORE":
+			if (localStorage.getItem("todos")) {
+				return [...JSON.parse(localStorage.getItem("todos"))];
+			}
+			return state;
 		default:
 			throw new Error();
 	}

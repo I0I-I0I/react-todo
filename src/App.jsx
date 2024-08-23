@@ -1,20 +1,25 @@
 import Header from "./components/Header/Header";
 import TodoList from "./components/TodoList/TodoList";
 
-import { TodoProvider } from "./components/context/todoContext";
-import { EditModeProvider } from "./components/context/editMode";
+import { TodoContext } from "./components/context/todoContext";
+import { useContext, useEffect } from "react";
 
-const App = () => (
+const App = () => {
 	// TODO: add categories for todos
-	// TODO: integration with local storage
 
-	<EditModeProvider>
-		<TodoProvider>
+	const { dispatchTodos } = useContext(TodoContext);
+
+	useEffect(() => {
+		dispatchTodos({ type: "GET_STORE" });
+	}, [dispatchTodos]);
+
+	return (
+		<>
 			<Header />
 			<TodoList />
-		</TodoProvider>
-	</EditModeProvider>
-);
+		</>
+	);
+};
 
 export default App;
 
