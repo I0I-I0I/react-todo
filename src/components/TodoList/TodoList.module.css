@@ -1,8 +1,9 @@
 .list {
 	--todo-width: 140px;
-	--todo-height: 200px;
+	--todo-height: 160px;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-rows: masonry;
 	gap: 30px;
 }

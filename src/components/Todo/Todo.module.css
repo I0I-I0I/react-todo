@@ -1,3 +1,5 @@
+/* Todo */
+
 .todo {
 	position: relative;
 
@@ -6,6 +8,8 @@
 
 	background-color: yellowgreen;
 	color: black;
+
+	transition: all .2s;
 
 	border-radius: 15px;
 }
@@ -36,11 +40,15 @@
 	}
 }
 
+/* Id */
+
 .id {
 	position: absolute;
 	top: 10px;
 	left: 10px;
 }
+
+/* Label */
 
 .label {
 	display: flex;
@@ -50,27 +58,11 @@
 	cursor: pointer;
 
 	width: 100%;
-	height: var(--todo-height);
-	padding: 15px 30px;
+	min-height: var(--todo-height);
+	padding: 40px 15px 15px;
 }
 
-.input {
-	visibility: hidden;
-}
-
-.inputOnChange {
-	width: 100%;
-	font-family: inherit;
-	font-size: 1rem;
-	text-align: center;
-}
-
-.inputOnChangeDisabled {
-	background-color: transparent;
-	pointer-events: none;
-	color: black;
-	outline: none;
-}
+/* Button */
 
 .buttonBlock {
 	position: absolute;
@@ -78,4 +70,29 @@
 	right: 10px;
 	display: flex;
 	gap: 10px;
+}
+
+/* Text area */
+
+.textArea::selection {
+	background-color: #fff;
+	color: #000;
+}
+
+.textArea {
+	padding: 2px;
+	border: none;
+	font-size: 1rem;
+	background-color: transparent;
+	color: inherit;
+	resize: none;
+	min-width: 100%;
+	outline: 1px solid black;
+}
+
+.textArea:disabled {
+	outline: none;
+	font-family: inherit;
+	min-height: 100%;
+	pointer-events: none;
 }

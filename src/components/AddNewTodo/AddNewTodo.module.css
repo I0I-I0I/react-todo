@@ -4,6 +4,7 @@
 	position: relative;
 
 	min-width: var(--todo-width);
+	min-height: 100%;
 	height: var(--todo-height);
 
 	border: dashed 2px;
@@ -13,7 +14,6 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	min-height: 100%;
 	padding: 15px 30px;
 
 	font-size: 1.5rem;
@@ -32,4 +32,12 @@
 	--color: lightgreen;
 
 	cursor: pointer;
+}
+
+.form {
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	align-items: center;
+	justify-items: center;
+	gap: 25px;
 }

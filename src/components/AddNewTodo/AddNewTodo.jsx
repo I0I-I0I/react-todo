@@ -42,7 +42,7 @@ const AddNewTodo = () => {
 
 			{isAddTodo && (
 				<Modal onClose={toggleAddTodo}>
-					<form onSubmit={onSubmit}>
+					<form onSubmit={onSubmit} className={styles.form}>
 						<h2 style={{ textAlign: "center" }}>Create a new todo</h2>
 						<Input
 							autoFocus
