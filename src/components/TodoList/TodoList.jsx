@@ -9,6 +9,7 @@ const TodoList = () => {
 	const { todos, dispatchTodos } = useContext(TodoContext);
 	const { editMode } = useContext(EditModeContext);
 	const [currentTodo, setCurrentTodo] = useState(null);
+	const [localEditMode, setLocalEditMode] = useState(null);
 
 	const dragStartHandler = (_, todo) => {
 		setCurrentTodo(todo);
@@ -35,6 +36,11 @@ const TodoList = () => {
 		});
 	};
 
+	const getLocalEditMode = (value) => {
+		console.log(value);
+		setLocalEditMode(value);
+	};
+
 	return (
 		<div className="container">
 			<ul className={styles.list}>
@@ -44,10 +50,12 @@ const TodoList = () => {
 							onDragStart={(e) => dragStartHandler(e, todo)}
 							onDragOver={(e) => dragOverHandler(e)}
 							onDrop={(e) => dropHandler(e, todo)}
-							draggable={editMode}
+							draggable={editMode && !localEditMode}
 							key={todo.id}
 						>
-							<Todo index={index + 1}>{todo}</Todo>
+							<Todo index={index + 1} getLocalEditMode={getLocalEditMode}>
+								{todo}
+							</Todo>
 						</li>
 					))}
 				<li>

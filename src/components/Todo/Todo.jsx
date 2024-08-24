@@ -2,17 +2,17 @@ import { useContext, useEffect, useRef, useState } from "react";
 import useInput from "../../hooks/useInput";
 import cls from "../../utils/cls";
 import Button from "../UI/Button/Button";
-import Input from "../UI/Input/Input";
 import { EditModeContext } from "../context/editMode";
 import { TodoContext } from "../context/todoContext";
 import styles from "./Todo.module.css";
+import TextAreaAutoSize from "../UI/TextAreaAutoSize/TextAreaAutoSize";
 
-const Todo = ({ children, index }) => {
+const Todo = ({ children, index, getLocalEditMode }) => {
 	const { dispatchTodos } = useContext(TodoContext);
 	const { editMode } = useContext(EditModeContext);
 	const [onChangeInput, inputState] = useInput(children.title);
 	const [localEditMode, setLocalEditMode] = useState(false);
-	const inputOnEdit = useRef();
+	const inputOnEdit = useRef(null);
 
 	useEffect(() => {
 		if (!editMode) {
@@ -22,7 +22,8 @@ const Todo = ({ children, index }) => {
 	}, [editMode]);
 
 	useEffect(() => {
-		inputOnEdit.current.focus();
+		if (localEditMode) inputOnEdit.current.focus();
+		getLocalEditMode(localEditMode);
 	}, [localEditMode]);
 
 	const handleEditTodo = (e) => {
@@ -70,19 +71,24 @@ const Todo = ({ children, index }) => {
 				<label
 					htmlFor={"todoComplete" + children.id}
 					className={styles.label}
-					style={{ cursor: editMode && "grab" }}
+					style={{
+						cursor: editMode
+							? !localEditMode
+								? "grab"
+								: "default"
+							: "pointer",
+					}}
 				>
-					<Input
-						ref={inputOnEdit}
-						value={inputState.value}
-						type="text"
-						onChange={onChangeInput}
-						disabled={!localEditMode}
-						className={cls(
-							styles.inputOnChange,
-							!localEditMode && styles.inputOnChangeDisabled,
-						)}
-					/>
+					<pre>
+						<TextAreaAutoSize
+							style={{ textDecoration: children.completed && "line-through" }}
+							className={styles.textArea}
+							ref={inputOnEdit}
+							value={inputState.value}
+							onChange={onChangeInput}
+							disabled={!localEditMode}
+						/>
+					</pre>
 					<input
 						id={"todoComplete" + children.id}
 						type="checkbox"
