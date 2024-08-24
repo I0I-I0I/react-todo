@@ -3,7 +3,7 @@ import styles from "./TextAreaAutoSize.module.css";
 import cls from "../../../utils/cls";
 
 const TextAreaAutoSize = forwardRef(
-	({ className, value, onChange, passedValue = "", ...props }, ref) => {
+	({ className, value, onChange, ...props }, ref) => {
 		const resizeTextArea = () => {
 			ref.current.style.height = "auto";
 			ref.current.style.height = ref.current.scrollHeight + "px";
@@ -23,5 +23,7 @@ const TextAreaAutoSize = forwardRef(
 		);
 	},
 );
+
+TextAreaAutoSize.displayName = "TextAreaAutoSize";
 
 export default TextAreaAutoSize;

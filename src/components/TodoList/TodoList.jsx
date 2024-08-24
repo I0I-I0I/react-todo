@@ -37,7 +37,6 @@ const TodoList = () => {
 	};
 
 	const getLocalEditMode = (value) => {
-		console.log(value);
 		setLocalEditMode(value);
 	};
 
