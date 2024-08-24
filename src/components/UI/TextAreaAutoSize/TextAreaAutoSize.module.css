@@ -1,0 +1,6 @@
+.textAreaAutoSize {
+	width: 100%;
+	line-height: inherit;
+	overflow: hidden;
+	font-family: inherit;
+}
